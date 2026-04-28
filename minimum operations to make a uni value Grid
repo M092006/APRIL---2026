@@ -1,0 +1,10 @@
+from typing import List
+class Solution:
+    def minOperations(self,grid:List[List[int]],x:int)->int:
+        nums=[v for r in grid for v in r]
+        r=nums[0]%x
+        for n in nums:
+            if n%x!=r:return -1
+        nums.sort()
+        m=nums[len(nums)//2]
+        return sum(abs(n-m)//x for n in nums)
